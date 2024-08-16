@@ -1,9 +1,11 @@
-# código de geração do gráfico
+
 import pandas as pd
 import seaborn as sns
 
-tabela = pd.read_csv("gasolina.csv")
+gasolina_df = pd.read_csv('gasolina.csv', sep=',')
 
-with sns.axes_style('whitegrid'):
-  grafico = sns.lineplot(data=tabela, x="dia", y="venda", palette="bright")
-  grafico.set(title='Preço médio da Gasolina em SP - Julho/21', xlabel='Dia', ylabel='Preço médio (R$)');
+with sns.axes_style ('whitegrid'):
+  grafico_gasolina = sns.lineplot(data=gasolina_df, x='dia', y='venda')
+  grafico_gasolina.set(title='Gasolina em São Paulo/SP nos 10 primeiros dias de Julho/2021', xlabel='Data', ylabel='Venda')
+  grafico_gasolina.get_figure().savefig(f"gasolina.png")
+     
